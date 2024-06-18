@@ -1,0 +1,440 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --color-nieve: #ffffff;
+    --color-brillonieve: #ffffff;
+}
+
+body{
+    overflow-x: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #1f2028;
+}
+section{
+    position: relative;
+    width: 100%;
+}
+
+section .waves{
+    position: relative;
+    width: auto;
+    z-index: 1;
+}
+
+section .waves .wave{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: url(Imagenes/wave.png);
+    background-size: 1000px;
+}
+
+section .waves .wave#wave1{
+    opacity: 0.5;
+    bottom: 0;
+    z-index: 1000;
+    animation: animate 4s linear infinite;
+}
+
+section .waves .wave#wave2{
+    opacity: 0.5;
+    bottom: 10px;
+    z-index: 999;
+    animation: animate2 4s linear infinite;
+}
+section .waves .wave#wave3{
+    opacity: 0.2;
+    bottom: 15px;
+    z-index: 998;
+    animation: animate 2s linear infinite;
+}
+section .waves .wave#wave4{
+    opacity: 0.7;
+    bottom: 20px;
+    z-index: 999;
+    animation: animate2 2s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        background-position-x: 1000px;
+    }
+    100%
+    {
+        background-position: 0px;
+    }
+}
+
+@keyframes animate2 {
+    0% {
+        background-position-x: 0px;
+    }
+    100%
+    {
+        background-position: 1000px;
+    }
+}
+
+
+@keyframes expandFade {
+    0% {
+        transform: scale(0.5);
+    }
+    75% {
+        transform: scale(2) rotate(360deg);
+        opacity: 0.5;
+        filter: drop-shadow(0 0 20px rgba(255, 35, 156));
+    }
+    100%{
+        transform: scale(2) rotate(360deg);
+        opacity: 0;
+        filter: drop-shadow(0 0 30px rgba(255, 35, 156, 0.5))
+    }
+}
+
+
+.humo {
+    position: absolute;
+    
+    z-index: 10;
+}
+.humo svg {
+    animation: expandFade 3s infinite;
+}
+
+#humo1 svg {
+    animation: expandFade 6s infinite;
+    transform-origin: center;
+    scale: 105%;
+}
+
+#humo2 svg {
+    animation: expandFade 9s infinite;
+    transform-origin: center;
+    transform: rotate(45deg);
+    scale: 125%;
+    
+}
+#humo3 svg {
+    animation: expandFade 12s infinite;
+    transform-origin: center;
+    transform: rotate(-45deg);
+}
+
+#humo4 svg {
+    animation: expandFade 15s infinite;
+    transform-origin: center;
+    scale: 150%;
+}
+
+#humo5 svg {
+    animation: expandFade 18s infinite;
+    transform-origin: center;
+    transform: rotate(105deg);
+}
+#humo6 svg {
+    animation: expandFade 21s infinite;
+    transform-origin: center;
+    transform: rotate(-305deg);
+    scale: 150%;
+}
+#humo7 svg {
+    animation: expandFade 27s infinite;
+    transform-origin: center;
+    transform: rotate(-720deg);
+    scale: 170%;
+}
+
+.Island{
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1300px;
+    bottom: 4.5vh;
+    z-index: 0;
+}
+.contenedor_humo{
+    display: None; 
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out; 
+    display: none;
+    position: absolute;
+    left: 45%;
+    bottom: 70vh;
+    z-index: 2;
+}
+
+.contenedor_humo.visible {
+    opacity: 1; 
+    display: block;
+  }
+.contenedor_cofre {
+    position: absolute;
+    bottom: 65vh;
+    left: 44.7%;
+}
+#click {
+    display: none;
+}
+.cofre {
+    position: relative;
+    width: 100px;
+    height: 40px;
+}
+.cofre img {
+    width: 100%;
+}
+.click {
+    position: absolute;
+    top: -35px;
+    left: 0px;
+    width: 100px;
+    transform-origin: bottom left;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.click img {
+    width: 100%;
+}
+#click:checked + label.click {
+    transform: translateY(-30px) scale(1);
+}
+
+.contenedor_cofre::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    top: 30px;
+    left: -10px;
+}
+
+
+.cofre {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+}
+
+.cofre::before{
+    content: '';
+    position: absolute;
+}
+
+.cofre::after{
+    content: '';
+    position: absolute;
+    
+}
+
+.cofre img {
+    width: 100%;
+}
+
+
+.card{
+    /* border: 1px solid white; */
+    display: None; 
+    opacity: 0; 
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: -450px;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    -webkit-perspective: 1200px;
+    perspective: 1200px;
+    transform: translateY(100%);
+}
+.card.visible{
+    opacity: 1; 
+    display: block;
+    transform: translateY(0%);
+}
+
+
+.card:hover{
+    transform: scale(1.2) rotate(-2deg);
+}
+
+.card:hover .afuera{
+    transform: rotateY(-130deg);
+}
+.foto{
+    display: flex; 
+    justify-content: center; 
+    
+}
+.foto img{
+    filter: drop-shadow(0 0 5px rgb(247, 247, 247));
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    object-fit: contain;
+}
+
+.adentro, .afuera{
+    /* border: 1px solid black; */
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 50.1%;
+}
+.adentro{
+    left: 50.1%;
+    background: linear-gradient(to right, #b1b10e, #ffff32 30%) ;
+    line-height: 1;
+    font-size: 9px;
+    padding: 0 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    left: 50%;
+}
+.afuera{
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    z-index: 2;
+    transform-origin: left;
+    transition: 1s;
+}
+
+.afuera p{
+    font-size: 8px ;
+    text-transform: uppercase;
+    margin-top: 10px;
+    text-align: center;
+    color: black;
+}
+.frente, .trasero{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: rotateX(0deg);
+}
+.frente{
+    background-color: yellow;
+}
+.trasero{
+    transform: rotateY(180deg);
+    background: linear-gradient(to left, #b1b10e, #ffff32 30%) ;
+
+}
+.snowflake {
+    color: var(--color-nieve);
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 0 5px var(--color-brillonieve);
+    }
+    
+.snowflake,.snowflake .inner{animation-iteration-count:infinite;animation-play-state:running}@keyframes snowflakes-fall{0%{transform:translateY(0)}100%{transform:translateY(110vh)}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;user-select:none;cursor:default;animation-name:snowflakes-shake;animation-duration:3s;animation-timing-function:ease-in-out}.snowflake .inner{animation-duration:10s;animation-name:snowflakes-fall;animation-timing-function:linear}.snowflake:nth-of-type(0){left:1%;animation-delay:0s}.snowflake:nth-of-type(0) .inner{animation-delay:0s}.snowflake:first-of-type{left:10%;animation-delay:1s}.snowflake:first-of-type .inner,.snowflake:nth-of-type(8) .inner{animation-delay:1s}.snowflake:nth-of-type(2){left:20%;animation-delay:.5s}.snowflake:nth-of-type(2) .inner,.snowflake:nth-of-type(6) .inner{animation-delay:6s}.snowflake:nth-of-type(3){left:30%;animation-delay:2s}.snowflake:nth-of-type(11) .inner,.snowflake:nth-of-type(3) .inner{animation-delay:4s}.snowflake:nth-of-type(4){left:40%;animation-delay:2s}.snowflake:nth-of-type(10) .inner,.snowflake:nth-of-type(4) .inner{animation-delay:2s}.snowflake:nth-of-type(5){left:50%;animation-delay:3s}.snowflake:nth-of-type(5) .inner{animation-delay:8s}.snowflake:nth-of-type(6){left:60%;animation-delay:2s}.snowflake:nth-of-type(7){left:70%;animation-delay:1s}.snowflake:nth-of-type(7) .inner{animation-delay:2.5s}.snowflake:nth-of-type(8){left:80%;animation-delay:0s}.snowflake:nth-of-type(9){left:90%;animation-delay:1.5s}.snowflake:nth-of-type(9) .inner{animation-delay:3s}.snowflake:nth-of-type(10){left:25%;animation-delay:0s}.snowflake:nth-of-type(11){left:65%;animation-delay:2.5s}
+
+span{
+    position: absolute;
+    background: url(Imagenes/Globo.png) no-repeat center center;
+    pointer-events: none;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    transform: translate(-50%, -50%);
+    animation: animacion_globo 2s linear infinite;
+}
+@keyframes animacion_globo{
+    0%{
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%, -1000%);
+        opacity: 1;
+        filter: hue-rotate(720deg);
+
+    }
+}
+
+@media (max-width: 600px) {
+    .Island {
+        width: 100%;
+        height: auto;
+    }
+    
+    .contenedor_humo{
+        position: absolute;
+        left: 45%;
+        bottom: 21vh;
+        transform: scale(45%);
+        z-index: 10;
+    }
+    .contenedor_cofre{
+        left: 44%;
+        bottom: 18vh;
+        transform: scale(45%);
+    }
+    .card{
+        width: 100px;
+        height: 50px;
+        top: -500px;
+    }
+    .afuera p{
+        font-size: 5px ;
+        text-transform: uppercase;
+        margin-top: 6px;
+        text-align: center;
+        color: black;
+    }
+    .adentro{
+        line-height: 1;
+        font-size: 5px;
+    }
+    .wave{
+        pointer-events: none;
+    }
+    span{
+        transform: scale(50%);
+    }
+}
+
+@media (max-width: 400px) {
+    section .waves .wave{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        background: url(Imagenes/wave.png);
+        background-size: 500px;
+    }
+    .contenedor_cofre{
+        left: 42%;
+        bottom: 20vh;
+        transform: scale(45%);
+    }
+    .contenedor_humo{
+        position: absolute;
+        left: 42%;
+        bottom: 20vh;
+        transform: scale(45%);
+        z-index: 10;
+    }
+}
